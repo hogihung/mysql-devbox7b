@@ -1,18 +1,34 @@
 # README
 
-Need to do a proper README but for now, need to jot this down:
+TODO: Create introduction... 
+
 
 ```
-# Ph0en!x7  move this later
+# At the time of creation, the root password for MySQL is: Ph0en!x7 
 ```
-
 
 Before running 'vagrant up' be sure to review/complete the following:
 
-1.  Vagrantfile, adjust memory settings if needed (see mem variable or use Environment Setting [provide example])  export VAGRANT_MEMORY=xxxxx
 
-2.  Edit the provisioning/set_mysql_root_pw.sh file and adjust NEW_PASS if needed
+1.  Adjust memory settings in Vagrantfile, if needed (see mem variable or use Environment Setting [provide example])
 
+```
+mem = mem / 1024 / 4
+vb.memory = ENV['VAGRANT_MEMORY'] || mem
+
+# From your terminal you can override memory defined in Vagrant file using:
+export VAGRANT_MEMORY=xxxxx
+```
+
+
+2.  Edit synced folder line in Vagrant file
+
+```
+config.vm.synced_folder "/Users/jfhogarty/Documents/Programming/Elixir/DEVBOX7A-B", "/vagrant"
+```
+
+
+3.  Edit the provisioning/set_mysql_root_pw.sh file and adjust NEW_PASS if you do not want to use the provided password.
 
 
 ```
@@ -239,7 +255,4 @@ mysql>
 
 # As we can see, the 'mytest' database was replicated from the Master to the Slave
 ```
-
-
-
 
